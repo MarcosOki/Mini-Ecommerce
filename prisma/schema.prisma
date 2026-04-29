@@ -4,16 +4,18 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model Produto {
-  id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement()) 
+  nome String
   descricao String
   preco Float
   estoque Int 
